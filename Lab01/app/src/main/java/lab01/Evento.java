@@ -14,7 +14,7 @@ package lab01;
  */
 public abstract class Evento {
     private String nome;
-    private Local local;
+    protected Local local;
     private double precoIngresso;
 
     /**
