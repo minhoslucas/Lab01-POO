@@ -29,7 +29,7 @@ public abstract class Evento {
     public Evento(String nome, Local local, ArrayList<Ingresso> ingressos_vendidos, double precoIngresso, LocalDate date){
         this.nome = nome;
         this.local = local;
-        this.ingressos_vendidos = new ArrayList<Ingresso>();
+        this.ingressos_vendidos = ingressos_vendidos;
         this.precoIngresso = precoIngresso;
         this.date = date;
     }
