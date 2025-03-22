@@ -15,6 +15,7 @@ public class Usuario {
 
     private String nome;
     private String email;
+    private Ingresso ticket; 
 
     /**
      * Construtor da classe Usuario
@@ -56,5 +57,13 @@ public class Usuario {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Ingresso getTicket() {
+        return this.ticket;
+    }
+
+    public void setTicket(Ingresso ticket) {
+        this.ticket = ticket;
     }
 }
