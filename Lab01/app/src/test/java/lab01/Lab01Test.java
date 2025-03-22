@@ -2,6 +2,9 @@ package lab01;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 
 
 public class Lab01Test {
@@ -13,8 +16,14 @@ public class Lab01Test {
     public void getCapacidadeEventoShow() {
 
         Local testLocal = new Local("Teatro Castro Mendes", 2000);
-        EventoShow testEvento = new EventoShow("MPB em Campinas", testLocal, 150, "Djavan", "01/05/2025");
-        assertEquals(2000, testEvento.getCapacidade());
+        ArrayList<String> setlist = new ArrayList<String>();
+        setlist.add("DIM");
+        setlist.add("Viola");
+        setlist.add("See You In Hell");
+        setlist.add("BIRD");
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, new ArrayList<Ingresso>() , 199.90, date, "Kpop", setlist, "Yves", 3.5);
+        assertEquals(2000, testEvento.getLocal().getCapacidade());
     }
 
 
@@ -27,9 +36,15 @@ public class Lab01Test {
     public void setAndGetArtistaEventoShow() {
 
         Local testLocal = new Local("Teatro Castro Mendes", 2000);
-        EventoShow testEvento = new EventoShow("MPB em Campinas", testLocal, 150, "Djavan", "01/05/2025");
-        testEvento.setArtista("Anavitória");
-        assertEquals("Anavitória", testEvento.getArtista());
+        ArrayList<String> setlist = new ArrayList<String>();
+        setlist.add("DIM");
+        setlist.add("Viola");
+        setlist.add("See You In Hell");
+        setlist.add("BIRD");
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, new ArrayList<Ingresso>() , 199.90, date, "Kpop", setlist, "Yves", 3.5);
+        testEvento.setArtist("Anavitória");
+        assertEquals("Anavitória", testEvento.getArtist());
     }
 
     /**
@@ -41,7 +56,13 @@ public class Lab01Test {
     public void getPrecoIngressoMeia() {
 
         Local testLocal = new Local("Teatro Castro Mendes", 2000);
-        EventoShow testEvento = new EventoShow("MPB em Campinas", testLocal, 200, "Djavan", "01/05/2025");
+        ArrayList<String> setlist = new ArrayList<String>();
+        setlist.add("DIM");
+        setlist.add("Viola");
+        setlist.add("See You In Hell");
+        setlist.add("BIRD");
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, new ArrayList<Ingresso>() , 200, date, "Kpop", setlist, "Yves", 3.5);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
         assertEquals(100, ingressoMeia.getPreco());
     }
@@ -55,7 +76,13 @@ public class Lab01Test {
     public void getPrecoIngressoInteira() {
 
         Local testLocal = new Local("Teatro Castro Mendes", 2000);
-        EventoShow testEvento = new EventoShow("MPB em Campinas", testLocal, 250, "Djavan", "01/05/2025");
+        ArrayList<String> setlist = new ArrayList<String>();
+        setlist.add("DIM");
+        setlist.add("Viola");
+        setlist.add("See You In Hell");
+        setlist.add("BIRD");
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, new ArrayList<Ingresso>() , 250, date, "Kpop", setlist, "Yves", 3.5);
         IngressoInteira ingressoInteira = new IngressoInteira(testEvento);
         assertEquals(250, ingressoInteira.getPreco());
     }
@@ -69,12 +96,18 @@ public class Lab01Test {
     public void adicionarIngressoMeia() {
 
         Local testLocal = new Local("Teatro Castro Mendes", 2000);
-        EventoShow testEvento = new EventoShow("MPB em Campinas", testLocal, 200, "Djavan", "01/05/2025");
+        ArrayList<String> setlist = new ArrayList<String>();
+        setlist.add("DIM");
+        setlist.add("Viola");
+        setlist.add("See You In Hell");
+        setlist.add("BIRD");
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, new ArrayList<Ingresso>() , 199.90, date, "Kpop", setlist, "Yves", 3.5);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
         Usuario usuarioTest = new Usuario("Gabriel", "gabriel@me.com");
-        testEvento.adicionarIngresso(ingressoMeia, usuarioTest);
-        assertEquals(1, testEvento.getIngressosVendidos().size());
-        assertEquals(ingressoMeia, usuarioTest.getIngresso());
+        testEvento.sellTicket(ingressoMeia, usuarioTest);
+        assertEquals(1, testEvento.getSOldTickets().size());
+        assertEquals(ingressoMeia, usuarioTest.getTicket());
 
     }
     

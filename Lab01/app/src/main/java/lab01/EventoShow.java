@@ -32,4 +32,13 @@ public class EventoShow extends Evento {
         System.out.println("Duração: " + this.duration);
         System.out.println("Data: " + this.getDate());
     }
+
+    public String getArtist() {
+        return this.artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+    
 }

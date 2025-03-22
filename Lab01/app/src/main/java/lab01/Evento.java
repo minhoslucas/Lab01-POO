@@ -66,8 +66,20 @@ public abstract class Evento {
         this.precoIngresso = precoIngresso;
     }
 
-    public int getSoldTickets(){
+    public Local getLocal() {
+        return this.local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
+    }
+
+    public int getSoldTicketsAmnt(){
         return this.ingressos_vendidos.size();
+    }
+
+    public ArrayList<Ingresso> getSOldTickets(){
+        return this.ingressos_vendidos;
     }
 
     private boolean isFull() {
@@ -77,9 +89,10 @@ public abstract class Evento {
         return false;
     }
 
-    public void sellTicket(Ingresso ticket){
+    public void sellTicket(Ingresso ticket, Usuario user){
         if (!isFull()) {
             ingressos_vendidos.add(ticket);
+            user.setTicket(ticket);
         } else {
             System.out.println("SOLD OUT");
         }
