@@ -5,6 +5,7 @@
  */
 
 package lab01;
+import java.util.Scanner;
 
 /**
  * Contém a estrutura de implementação da aplicação.

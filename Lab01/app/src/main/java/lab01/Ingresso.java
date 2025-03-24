@@ -14,7 +14,7 @@ package lab01;
  */
 public abstract class Ingresso {
 
-    private Evento evento;
+    protected Evento evento;
 
     /**
      * Construtor da classe Ingresso
@@ -29,5 +29,4 @@ public abstract class Ingresso {
      * @return o preço do Ingresso
      */
     public abstract double getPreco();
-    
 }
