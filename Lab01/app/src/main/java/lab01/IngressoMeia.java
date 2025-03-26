@@ -10,7 +10,7 @@ public class IngressoMeia extends Ingresso{
     }
     /**
      * Retorna o preço do Ingresso dividido por dois
-     * @return
+     * @return o preço do ingresso
      */
     
     @Override

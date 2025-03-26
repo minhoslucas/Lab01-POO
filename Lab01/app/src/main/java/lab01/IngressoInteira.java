@@ -10,7 +10,7 @@ public class IngressoInteira extends Ingresso{
     }
     /**
      * Retorna o preço do Ingresso
-     * @return
+     * @return o preço do ingresso
      */
 
     @Override

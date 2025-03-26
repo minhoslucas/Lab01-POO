@@ -10,7 +10,7 @@ public class IngressoVIP extends Ingresso {
     }
     /**
      * Retorna o dobro do preço do Ingresso
-     * @return
+     * @return o preço do ingresso
      */
 
     @Override
