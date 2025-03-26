@@ -44,6 +44,7 @@ public class EventoTeatro extends Evento {
     @Override
     public void showInfo() {
         System.out.println("Gênero: " + this.genre);
+        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
         System.out.println("Cast: ");
         this.mostrarElenco();
         System.out.println("Duração: " + this.getDuration());

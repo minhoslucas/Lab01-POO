@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public abstract class Evento {
     private String nome;
-    protected Local local;
+    private Local local;
     private ArrayList<Ingresso> ingressos_vendidos;
     private double precoIngresso;
     private LocalDate date;

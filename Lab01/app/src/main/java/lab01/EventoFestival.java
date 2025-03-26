@@ -47,6 +47,7 @@ public class EventoFestival extends Evento {
     public void showInfo() {
         System.out.println("Lineup: ");
         this.showLineup();
+        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
         System.out.println("Duração: " + this.getDuration());
         System.out.println("Data: " + this.getData());
     }

@@ -48,6 +48,7 @@ public class EventoShow extends Evento {
     public void showInfo() {
         System.out.println("Gênero: " + this.genre);
         System.out.println("Artista: " + this.artist);
+        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
         System.out.println("Setlist: ");
         this.showSetlist();
         System.out.println("Duração: " + this.getDuration());

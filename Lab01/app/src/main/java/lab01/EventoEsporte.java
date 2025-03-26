@@ -80,7 +80,7 @@ public class EventoEsporte extends Evento {
     public void showInfo() {
         System.out.println("Esporte:" + this.esporte);
         System.out.println("Jogo:" + this.timeDaCasa + "Vs" + this.timeVisitante);
-        System.out.println("Capacidade: " + this.local.getCapacidade());
+        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
         System.out.println("Data: " + this.getData());
     }
 }
