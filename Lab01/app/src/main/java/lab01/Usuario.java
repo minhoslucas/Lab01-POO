@@ -10,6 +10,7 @@ package lab01;
  * 
  * @author Gabriel Leite - 216180
  * @author Caio Rhoden - 214129
+ * @author Lucas Beserra - 281815
  */
 public class Usuario {
 
