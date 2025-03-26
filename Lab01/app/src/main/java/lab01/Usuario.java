@@ -17,14 +17,17 @@ public class Usuario {
     private String email;
     private Ingresso ticket; 
 
+    
     /**
-     * Construtor da classe Usuario
-     * @param nome o nome do usuário
-     * @param email o email do usuário
+     * Construtor da classe Usuário
+     * @param nome o nome do Usuário
+     * @param email o email do Usuário
+     * @param ticket o Ingresso do Usuário
      */
-    public Usuario(String nome, String email){
+    public Usuario(String nome, String email, Ingresso ticket){
         this.nome = nome;
         this.email = email;
+        this.ticket = ticket;
     }
 
     /**
@@ -58,10 +61,18 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+    /**
+     * Retorna o ingresso do usuário
+     * @return
+     */
 
     public Ingresso getTicket() {
         return this.ticket;
     }
+    /**
+     * Altera o ingresso do usuário para `ticket`
+     * @param ticket
+     */
 
     public void setTicket(Ingresso ticket) {
         this.ticket = ticket;
