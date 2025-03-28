@@ -1,6 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -19,9 +20,9 @@ public class EventoFestival extends Evento {
      * @param duration a duração do evento
      */
 
-    public EventoFestival(String nome, Local local, ArrayList<Ingresso> ingressos_vendidos, LocalDate date,
-                         double precoIngresso, ArrayList<String> lineup, double duration) {
-        super(nome, local, ingressos_vendidos, precoIngresso, date, duration);
+    public EventoFestival(String nome, Local local, LocalDate date,
+                         double precoIngresso, ArrayList<String> lineup, LocalTime duration) {
+        super(nome, local, precoIngresso, date, duration);
         this.lineup = lineup;
     }
     /**

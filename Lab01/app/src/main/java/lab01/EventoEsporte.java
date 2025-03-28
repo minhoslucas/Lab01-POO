@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalTime;
 /**
  * Contém a estrutura de implementação de um Evento do tipo Esporte
  * @author Lucas Beserra - 281815
@@ -23,9 +23,9 @@ public class EventoEsporte extends Evento {
      * @param esporte o tipo de esporte do Evento
      */
 
-    public EventoEsporte(String nome, Local local, ArrayList<Ingresso> ingressos_vendidos, double precoIngresso,
-                         LocalDate date, double duration, String timeDaCasa, String timeVisitante, String esporte) {
-        super(nome, local, ingressos_vendidos, precoIngresso, date, duration);
+    public EventoEsporte(String nome, Local local, double precoIngresso,
+                         LocalDate date, LocalTime duration, String timeDaCasa, String timeVisitante, String esporte) {
+        super(nome, local, precoIngresso, date, duration);
         this.timeDaCasa = timeDaCasa;
         this.timeVisitante = timeVisitante;
         this.esporte = esporte;

@@ -11,10 +11,9 @@ public class HistoricoEventos {
 
     /**
      * Construtor da classe HistoricoEventos
-     * @param event_list a lista que guarda o histórico
      */
-    public HistoricoEventos(ArrayList<Evento> event_list) {
-        this.event_list = event_list;
+    public HistoricoEventos() {
+        this.event_list = new ArrayList<Evento>();
     }
     /**
      * Retorna a o histórico de eventos

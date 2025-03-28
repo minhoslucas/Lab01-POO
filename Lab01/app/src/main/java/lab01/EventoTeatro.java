@@ -1,6 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 /**
  * Contém a estrutura de implementação de um Evento do tipo Teatro
@@ -22,9 +23,9 @@ public class EventoTeatro extends Evento {
      * @param duration duração do Evento
      */
 
-    public EventoTeatro(String nome, Local local, ArrayList<Ingresso> ingressos_vendidos, double precoIngresso, LocalDate date,
-                        String genre, ArrayList<String> cast, double duration) {
-        super(nome, local, ingressos_vendidos, precoIngresso, date, duration);
+    public EventoTeatro(String nome, Local local, double precoIngresso, LocalDate date,
+                        String genre, ArrayList<String> cast, LocalTime duration) {
+        super(nome, local, precoIngresso, date, duration);
         this.genre = genre;
         this.cast = cast;
     }
