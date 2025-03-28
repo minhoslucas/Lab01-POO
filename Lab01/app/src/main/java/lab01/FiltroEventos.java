@@ -4,61 +4,107 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Contém a estrutura de implementação de um filtro de eventos
+ * Interface que define os métodos para filtrar eventos de acordo com diferentes critérios.
+ * @author Lucas Beserra - 281815
  */
-
 public interface FiltroEventos {
-    public ArrayList<Evento> filterDate(LocalDate date);
-    public ArrayList<Evento> filterType(Evento event);
-    public ArrayList<Evento> filterPrice(double price);
-    public ArrayList<Evento> filterDuration(double duration);
-    public void printResult();
+
+    /**
+     * Filtra os eventos pela data especificada.
+     * 
+     * @param date A data para filtrar os eventos.
+     * @return Uma lista de eventos que correspondem à data fornecida.
+     */
+    public ArrayList<Evento> filter(LocalDate date);
+
+    /**
+     * Filtra os eventos pelo tipo de evento fornecido.
+     * 
+     * @param event O tipo de evento para filtrar.
+     * @return Uma lista de eventos que correspondem ao tipo de evento fornecido.
+     */
+    public ArrayList<Evento> filter(Evento event);
+
+    /**
+     * Filtra os eventos pelo preço do ingresso.
+     * 
+     * @param price O preço do ingresso para filtrar os eventos.
+     * @return Uma lista de eventos que possuem o preço de ingresso fornecido.
+     */
+    public ArrayList<Evento> filter(double price);
 }
 
-class FiltrarData {
-    private LocalDate date;
+/**
+ * Classe que representa um filtro de eventos, com base em diferentes critérios de filtragem.
+ */
+class Filtro {
+    
+    /** Lista de eventos históricos para aplicar os filtros. */
     private HistoricoEventos event_list;
 
-    public FiltrarData(LocalDate date, HistoricoEventos event_list) {
-        this.date = date;
+    /**
+     * Construtor para inicializar o filtro com uma lista de eventos.
+     * 
+     * @param event_list O histórico de eventos que será usado para filtragem.
+     */
+    public Filtro(HistoricoEventos event_list) {
         this.event_list = event_list;
     }
 
-    public ArrayList<Evento> filterDate() {
+    /**
+     * Filtra os eventos pela data fornecida.
+     * 
+     * @param date A data a ser usada como critério de filtragem.
+     * @return Uma lista de eventos que ocorrem na data fornecida.
+     */
+    public ArrayList<Evento> filter(LocalDate date) {
         ArrayList<Evento> result = new ArrayList<Evento>();
-        for (int i = 0; i < this.event_list.getEventList().size(); i++) {
-            Evento test = this.event_list.getEventList().get(i);
-            if (test.getData() == this.date) {
-                result.add(test);
+        ArrayList<Evento> events = this.event_list.getEventList();
+        
+        // Itera sobre todos os eventos e verifica se a data corresponde
+        for (int i = 0; i < events.size(); i++) {
+            if (events.get(i).getData().equals(date)) {  // Verifica se a data do evento é igual à fornecida
+                result.add(events.get(i));
             }
         }
         return result;
     }
-}
 
-class FiltrarTipo {
-    private Evento event;
-    private HistoricoEventos event_list;
-
-    public FiltrarTipo(Evento event, HistoricoEventos event_list) {
-        this.event = event;
-        this.event_list = event_list;
-    }
-
-    public ArrayList<Evento> filterType() {
+    /**
+     * Filtra os eventos pelo tipo de evento fornecido.
+     * 
+     * @param event A classe do tipo de evento a ser usada para filtrar.
+     * @return Uma lista de eventos que correspondem ao tipo de evento fornecido.
+     */
+    public ArrayList<Evento> filter(Class<?> event) {
         ArrayList<Evento> result = new ArrayList<Evento>();
-        for (int i = 0; i < this.event_list.getEventList().size(); i++) {
-            boolean test = this.event_list.getEventList().get(i).getClass().equals(this.event);
-            if (test) {
-                result.add(this.event_list.getEventList().get(i));
+        ArrayList<Evento> events = this.event_list.getEventList();
+        
+        // Itera sobre todos os eventos e verifica se o evento é da classe fornecida
+        for (int i = 0; i < events.size(); i++) {
+            if (event.isInstance(events.get(i))) {  // Verifica se o evento é uma instância da classe fornecida
+                result.add(events.get(i));
             }
         }
         return result;
     }
 
-    public void printResult() {
-        for (int i = 0; i < this.event_list.getEventList().size(); i++) {
-            System.out.println(this.event_list.getEventList().get(i));
+    /**
+     * Filtra os eventos pelo preço do ingresso.
+     * 
+     * @param price O preço do ingresso para filtrar os eventos.
+     * @return Uma lista de eventos que possuem o preço de ingresso especificado.
+     */
+    public ArrayList<Evento> filter(double price) {
+        ArrayList<Evento> result = new ArrayList<Evento>();
+        ArrayList<Evento> events = this.event_list.getEventList();
+        
+        // Itera sobre todos os eventos e verifica se o preço do ingresso é igual ao fornecido
+        for (int i = 0; i < events.size(); i++) {
+            if (price == events.get(i).getPrecoIngresso()) {  // Verifica se o preço do ingresso é igual ao fornecido
+                result.add(events.get(i));
+            }
         }
+        return result;
     }
 }
