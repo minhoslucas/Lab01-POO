@@ -5,8 +5,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /**
- * Interface que define os métodos para filtrar eventos de acordo com diferentes critérios.
- * Código apenas COMENTADO por IA generativa e corrigido posteriormente
+ * Interface que define os métodos para filtrar eventos de acordo com diferentes critérios, como data, tipo de evento,
+ * preço do ingresso e duração do evento.
+ * 
  * @author Lucas Beserra - 281815
  */
 public interface FiltroEventos {
@@ -35,16 +36,28 @@ public interface FiltroEventos {
      */
     public ArrayList<Evento> filter(double price);
 
+    /**
+     * Filtra os eventos pela duração especificada.
+     * 
+     * @param duration A duração para filtrar os eventos.
+     * @return Uma lista de eventos que correspondem à duração fornecida.
+     */
     public ArrayList<Evento> filter(Duration duration);
 }
 
 /**
  * Classe que representa um filtro de eventos, com base em diferentes critérios de filtragem.
+ * Os critérios incluem data, tipo de evento, preço do ingresso e duração do evento.
+ * Comentários feitos por IA e corrigidos posteriormente
+ * 
+ * @author Lucas Beserra - 281815
  */
-class Filtro {
-    
+class Filtro implements FiltroEventos{
+
     /** Lista de eventos históricos para aplicar os filtros. */
     private HistoricoEventos event_list;
+
+    /** Lista para armazenar os resultados do filtro aplicado. */
     private ArrayList<Evento> result;
 
     /**
@@ -54,7 +67,7 @@ class Filtro {
      */
     public Filtro(HistoricoEventos event_list) {
         this.event_list = event_list;
-        this.result = new ArrayList<Evento>();
+        this.result = new ArrayList<Evento>(); // Inicializa a lista de resultados do filtro
     }
 
     /**
@@ -67,9 +80,9 @@ class Filtro {
         ArrayList<Evento> events = this.event_list.getEventList();
         this.result.clear();
         
-        // Itera sobre todos os eventos e verifica se a data corresponde
+        // Itera sobre todos os eventos e verifica se a data do evento corresponde à data fornecida
         for (int i = 0; i < events.size(); i++) {
-            if (events.get(i).getData().equals(date)) {  // Verifica se a data do evento é igual à fornecida
+            if (events.get(i).getData().equals(date)) {
                 this.result.add(events.get(i));
             }
         }
@@ -86,9 +99,9 @@ class Filtro {
         ArrayList<Evento> events = this.event_list.getEventList();
         this.result.clear();
         
-        // Itera sobre todos os eventos e verifica se o evento é da classe fornecida
+        // Itera sobre todos os eventos e verifica se o evento é uma instância da classe fornecida
         for (int i = 0; i < events.size(); i++) {
-            if (event.isInstance(events.get(i))) {  // Verifica se o evento é uma instância da classe fornecida
+            if (event.isInstance(events.get(i))) {
                 this.result.add(events.get(i));
             }
         }
@@ -96,7 +109,7 @@ class Filtro {
     }
 
     /**
-     * Filtra os eventos pelo preço do ingresso.
+     * Filtra os eventos pelo preço do ingresso fornecido.
      * 
      * @param price O preço do ingresso para filtrar os eventos.
      * @return Uma lista de eventos que possuem o preço de ingresso especificado.
@@ -105,7 +118,7 @@ class Filtro {
         ArrayList<Evento> events = this.event_list.getEventList();
         this.result.clear();
         
-        // Itera sobre todos os eventos e verifica se o preço do ingresso é igual ao fornecido
+        // Itera sobre todos os eventos e verifica se o preço do ingresso é menor ou igual ao preço fornecido
         for (int i = 0; i < events.size(); i++) {
             if (price <= events.get(i).getPrecoIngresso()) {  // Verifica se o preço do ingresso é menor ou igual ao fornecido
                 this.result.add(events.get(i));
@@ -114,23 +127,33 @@ class Filtro {
         return this.result;
     }
 
+    /**
+     * Filtra os eventos pela duração fornecida.
+     * 
+     * @param duration A duração do evento para filtrar.
+     * @return Uma lista de eventos que possuem uma duração menor ou igual à duração fornecida.
+     */
     public ArrayList<Evento> filter(Duration duration) {
         ArrayList<Evento> events = this.event_list.getEventList();
         this.result.clear();
         
-        // Itera sobre todos os eventos e verifica se a duração é menor ou igual ao fornecido
+        // Itera sobre todos os eventos e verifica se a duração do evento é menor ou igual à duração fornecida
         for (int i = 0; i < events.size(); i++) {
-            if (events.get(i).getDuration().compareTo(duration) < 0 ||
-                events.get(i).getDuration().equals(duration)) {  // Verifica se a duração é manor ou igual ao fornecido
+            if (events.get(i).getDuration().compareTo(duration) < 0 || 
+                events.get(i).getDuration().equals(duration)) {
                 this.result.add(events.get(i));
             }
         }
         return this.result;
     }
 
+    /**
+     * Exibe os resultados dos filtros aplicados.
+     */
     public void showResult() {
         for (int i = 0; i < this.result.size(); i++) {
-            System.out.println(this.result.get(i));
+            System.out.println(this.result.get(i)); // Exibe cada evento na lista de resultados
         }
     }
 }
+

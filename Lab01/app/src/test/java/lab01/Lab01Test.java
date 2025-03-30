@@ -2,17 +2,20 @@ package lab01;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
-
+//Comentários feitos por IA e corrigidos posteriormente
 
 public class Lab01Test {
 
     /**
-     * Testa se o getCapacidadeEvento retorna a capacidade do local do Evento
-     * Foi mudado apenas o artista
+     * Testa o método getCapacidade do EventoShow.
+     * Verifica se o método getCapacidade retorna corretamente a capacidade do local do evento.
+     * Neste caso, foi criado um evento do tipo EventoShow com o local "Teatro Castro Mendes".
+     * 
+     * Espera-se que o método retorne a capacidade do local (2000).
      */
     @Test
     public void getCapacidadeEventoShow() {
@@ -24,17 +27,18 @@ public class Lab01Test {
         setlist.add("See You In Hell");
         setlist.add("BIRD");
         LocalDate date = LocalDate.of(2025, 10, 25);
-        LocalTime time = LocalTime.of(3, 30);
-        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", setlist, "Yves", time);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
+        testEvento.setSetlist(setlist);
         assertEquals(2000, testEvento.getLocal().getCapacidade());
     }
 
-
     /**
-     * Testa o get e seter do EventoShow para o atributo artista
-     * Espera-se a troca de "Yves" por "Anavitória"
+     * Testa os métodos get e set para o atributo 'artista' da classe EventoShow.
+     * Neste teste, o nome do artista do evento é alterado de "Yves" para "Anavitória".
+     * 
+     * Espera-se que o nome do artista seja atualizado corretamente.
      */
-
     @Test
     public void setAndGetArtistaEventoShow() {
 
@@ -44,18 +48,19 @@ public class Lab01Test {
         setlist.add("Viola");
         setlist.add("See You In Hell");
         setlist.add("BIRD");
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
-        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", setlist, "Yves", time);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
         testEvento.setArtist("Anavitória");
+        testEvento.setSetlist(setlist);
         assertEquals("Anavitória", testEvento.getArtist());
     }
 
     /**
-     * Testa o método getPreco para o IngressoMeia
-     * Espera o retorno da metade do valor (100) do ingresso do EventoShow criado (200)
+     * Testa o método getPreco da classe IngressoMeia.
+     * Verifica se o preço do ingresso meia é calculado corretamente como metade do preço do ingresso completo.
+     * Neste caso, o ingresso do EventoShow tem preço 200, então espera-se que o preço do ingresso meia seja 100.
      */
-
     @Test
     public void getPrecoIngressoMeia() {
 
@@ -65,18 +70,19 @@ public class Lab01Test {
         setlist.add("Viola");
         setlist.add("See You In Hell");
         setlist.add("BIRD");
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
-        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 200, date, "Kpop", setlist, "Yves", time);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 200, date, "Kpop", "Yves", time);
+        testEvento.setSetlist(setlist);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
         assertEquals(100, ingressoMeia.getPreco());
         assertEquals(200, testEvento.getPrecoIngresso());
     }
 
-
     /**
-     * Testa o método getPreco para o IngressoInteira
-     * Espera o retorno do valor (250) do ingresso do EventoShow criado
+     * Testa o método getPreco da classe IngressoInteira.
+     * Verifica se o preço do ingresso inteiro é calculado corretamente, retornando o valor completo.
+     * Neste caso, o ingresso do EventoShow tem preço 250, e espera-se que o preço do ingresso inteiro seja 250.
      */
     @Test
     public void getPrecoIngressoInteira() {
@@ -87,17 +93,18 @@ public class Lab01Test {
         setlist.add("Viola");
         setlist.add("See You In Hell");
         setlist.add("BIRD");
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
-        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 250, date, "Kpop", setlist, "Yves", time);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 250, date, "Kpop", "Yves", time);
+        testEvento.setSetlist(setlist);
         IngressoInteira ingressoInteira = new IngressoInteira(testEvento);
         assertEquals(250, ingressoInteira.getPreco());
     }
 
     /**
-     * Testa o método adicionarIngressoMeia
-     * Verifica se o ingresso foi adicionado à lista de ingressos vendidos
-     * e se o usuario agora tem o ingresso
+     * Testa o método adicionarIngresso da classe EventoShow.
+     * Verifica se o ingresso meia é corretamente adicionado à lista de ingressos vendidos do evento.
+     * Além disso, verifica se o ingresso foi corretamente atribuído ao usuário.
      */
     @Test
     public void adicionarIngressoMeia() {
@@ -108,47 +115,46 @@ public class Lab01Test {
         setlist.add("Viola");
         setlist.add("See You In Hell");
         setlist.add("BIRD");
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
-        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", setlist, "Yves", time);
+        EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
+        testEvento.setSetlist(setlist);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
         Usuario usuarioTest = new Usuario("Gabriel", "gabriel@gmail.com");
         testEvento.adicionaIngresso(ingressoMeia, usuarioTest);
         assertEquals(1, testEvento.getIngressosVendidosQte());
         assertEquals(ingressoMeia, usuarioTest.getTicket());
-
     }
-    
+
     /**
-     * Testa o método adicionarEvento do HistoricoEventos
-     * Verifica se os dois eventos foram adicionados à lista de eventos
-     * do HistoricoEventos
+     * Testa o método adicionarEvento da classe HistoricoEventos.
+     * Verifica se os eventos foram corretamente adicionados ao histórico de eventos.
+     * Espera-se que a quantidade de eventos no histórico seja igual a 2.
      */
     @Test
     public void adicionaEventoemHistorico() {
 
         Local testLocal = new Local("Allianz Park", 40000);
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
         EventoEsporte testEvento1 = new EventoEsporte("Clássico Rei", testLocal, 149.99, date, time, "Santos", "Palmeiras", "Futebol");
         EventoEsporte testEvento2 = new EventoEsporte("Final de Vôlei", testLocal, 149.99, date, time, "Brasil", "Argentina", "Vôlei");
         HistoricoEventos historicoTeste = new HistoricoEventos();
-        historicoTeste.addToList(testEvento1);;
+        historicoTeste.addToList(testEvento1);
         historicoTeste.addToList(testEvento2);
         assertEquals(2, historicoTeste.getEventList().size());
-
     }
 
     /**
-     * Testa o método buscarEventosPorTipo do HistoricoEventos
-     * Verifica se os dois eventos do tipo EventoShow foram encontrados
-     * pela busca
+     * Testa o método buscarEventosPorTipo da classe HistoricoEventos.
+     * Verifica se o filtro retorna corretamente os eventos do tipo EventoShow.
+     * Espera-se que dois eventos do tipo EventoShow sejam encontrados.
      */
     @Test
     public void buscarEventosPorTipo() {
 
         Local testLocal = new Local("Allianz Park", 40000);
-        LocalTime time = LocalTime.of(3, 30);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
         LocalDate date = LocalDate.of(2025, 10, 25);
         ArrayList<String> setlist1 = new ArrayList<String>();
         setlist1.add("DIM");
@@ -160,8 +166,10 @@ public class Lab01Test {
         setlist2.add("Fancy");
         setlist2.add("I Can't Stop Me");
         setlist2.add("Likey");
-        EventoShow testEvento1 = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 200, date, "Kpop", setlist1, "Yves", time);
-        EventoShow testEvento2 = new EventoShow("Ready To Be Tour", testLocal, 200, date, "Kpop", setlist2, "Twice", time);
+        EventoShow testEvento1 = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 200, date, "Kpop", "Yves", time);
+        testEvento1.setSetlist(setlist1);
+        EventoShow testEvento2 = new EventoShow("Ready To Be Tour", testLocal, 200, date, "Kpop", "Twice", time);
+        testEvento1.setSetlist(setlist2);
         EventoEsporte testEvento3 = new EventoEsporte("Clássico Rei", testLocal, 149.99, date, time, "Santos", "Palmeiras", "Futebol");
         EventoEsporte testEvento4 = new EventoEsporte("Final de Vôlei", testLocal, 149.99, date, time, "Brasil", "Argentina", "Vôlei");
         HistoricoEventos historicoTeste = new HistoricoEventos();

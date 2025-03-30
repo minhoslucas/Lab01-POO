@@ -6,7 +6,9 @@
 package lab01;
 
 /**
- * Contém a estrutura de implementação de um Local.
+ * Classe que representa um local onde eventos podem acontecer.
+ * A classe contém o nome e a capacidade do local.
+ * Comentários feitos por IA e corrigidos posteriormente
  * 
  * @author Gabriel Leite - 216180
  * @author Caio Rhoden - 214129
@@ -17,8 +19,11 @@ public class Local {
     private double capacidade;
 
     /**
-     * Construtor da classe Local
+     * Construtor da classe Local.
+     * Inicializa o local com o nome e a capacidade fornecidos.
+     * 
      * @param nome o nome do local
+     * @param capacidade a capacidade do local (número de pessoas que pode acomodar)
      */
     public Local(String nome, double capacidade){
         this.nome = nome;
@@ -26,7 +31,8 @@ public class Local {
     }
 
     /**
-     * Retorna o nome do local
+     * Retorna o nome do local.
+     * 
      * @return o nome do local
      */
     public String getNome(){
@@ -34,7 +40,8 @@ public class Local {
     }
 
     /**
-     * Altera o nome do local para `nome` 
+     * Altera o nome do local.
+     * 
      * @param nome o novo nome do local
      */
     public void setNome(String nome){
@@ -42,7 +49,8 @@ public class Local {
     }
 
     /**
-     * Retorna a capacidade do local
+     * Retorna a capacidade do local.
+     * 
      * @return a capacidade do local
      */
     public double getCapacidade(){
@@ -50,13 +58,20 @@ public class Local {
     }
     
     /**
-     * Altera a capacidade do local para `capacidade` 
+     * Altera a capacidade do local.
+     * 
      * @param capacidade a nova capacidade do local
      */
     public void setCapacidade(double capacidade){
         this.capacidade = capacidade;
     }
 
+    /**
+     * Retorna uma representação em formato de string do local.
+     * A string será composta pelo nome do local e sua capacidade.
+     * 
+     * @return uma string representando o local no formato: "nome (capacidade)"
+     */
     @Override
     public String toString() {
         return this.nome

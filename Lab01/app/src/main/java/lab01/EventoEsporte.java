@@ -2,27 +2,31 @@ package lab01;
 
 import java.time.LocalDate;
 import java.time.Duration;
+
 /**
- * Contém a estrutura de implementação de um Evento do tipo Esporte
+ * Representa um Evento do tipo Esporte. Este evento está relacionado a uma competição esportiva entre dois times.
+ * Contém informações como o time da casa, o time visitante e o tipo de esporte praticado.
+ * Comentários feitos por IA e corrigidos posteriormente
+ * 
  * @author Lucas Beserra - 281815
  */
-
 public class EventoEsporte extends Evento {
     private String timeDaCasa;
     private String timeVisitante;
     private String esporte;
+
     /**
-     * Construtor da classe EventoEsporte
+     * Construtor da classe EventoEsporte. Inicializa os atributos do Evento Esportivo.
+     * 
      * @param nome o nome do Evento
      * @param local o local do Evento
-     * @param ingressos_vendidos a lista de ingressos vendidos do Evento
      * @param precoIngresso o preço do ingresso do Evento
      * @param date a data do Evento
-     * @param timeDaCasa o time do local do Evento
-     * @param timeVisitante o time visitante do Evento
-     * @param esporte o tipo de esporte do Evento
+     * @param duration a duração do Evento
+     * @param timeDaCasa o time da casa no Evento
+     * @param timeVisitante o time visitante no Evento
+     * @param esporte o tipo de esporte praticado no Evento
      */
-
     public EventoEsporte(String nome, Local local, double precoIngresso,
                          LocalDate date, Duration duration, String timeDaCasa, String timeVisitante, String esporte) {
         super(nome, local, precoIngresso, date, duration);
@@ -30,51 +34,64 @@ public class EventoEsporte extends Evento {
         this.timeVisitante = timeVisitante;
         this.esporte = esporte;
     }
+
     /**
-     * Retorna o time da casa
-     * @return o time da casa
+     * Retorna o time da casa que participará do evento.
+     * 
+     * @return o nome do time da casa
      */
     public String getTimeDaCasa() {
         return this.timeDaCasa;
     }
+
     /**
-     * Altera o time da casa para `timeDaCasa`
-     * @param timeDaCasa o time da casa
+     * Altera o time da casa para o valor especificado.
+     * 
+     * @param timeDaCasa o novo nome do time da casa
      */
     public void setTimeDaCasa(String timeDaCasa) {
         this.timeDaCasa = timeDaCasa;
     }
+
     /**
-     * Retorna o time visitante
-     * @return o time visitante
+     * Retorna o time visitante que participará do evento.
+     * 
+     * @return o nome do time visitante
      */
     public String getTimeVisitante() {
         return this.timeVisitante;
     }
+
     /**
-     * Altera o time da casa para `timeVisitante`
-     * @param timeVisitante o time visitante
+     * Altera o time visitante para o valor especificado.
+     * 
+     * @param timeVisitante o novo nome do time visitante
      */
     public void setTimeVisitante(String timeVisitante) {
         this.timeVisitante = timeVisitante;
     }
+
     /**
-     * Retorna o esporte que vai ser jogado no Evento
-     * @return esporte
+     * Retorna o tipo de esporte que será praticado no evento.
+     * 
+     * @return o nome do esporte
      */
     public String getEsporte() {
         return this.esporte;
     }
+
     /**
-     * Altera o esporte que vai ser jogado para `esporte`
-     * @param esporte
+     * Altera o tipo de esporte que será praticado no evento.
+     * 
+     * @param esporte o novo tipo de esporte
      */
     public void setEsporte(String esporte) {
         this.esporte = esporte;
     }
-  
+
     /**
-     * Imprime as informações do Evento
+     * Exibe as informações detalhadas do Evento Esportivo, como o local, capacidade, duração,
+     * tipo de esporte, times participantes e data do evento.
      */
     @Override
     public void showInfo() {
