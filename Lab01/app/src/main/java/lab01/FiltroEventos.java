@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +35,7 @@ public interface FiltroEventos {
      */
     public ArrayList<Evento> filter(double price);
 
-    public ArrayList<Evento> filter(LocalTime duration);
+    public ArrayList<Evento> filter(Duration duration);
 }
 
 /**
@@ -107,20 +107,21 @@ class Filtro {
         
         // Itera sobre todos os eventos e verifica se o preço do ingresso é igual ao fornecido
         for (int i = 0; i < events.size(); i++) {
-            if (price == events.get(i).getPrecoIngresso()) {  // Verifica se o preço do ingresso é igual ao fornecido
+            if (price <= events.get(i).getPrecoIngresso()) {  // Verifica se o preço do ingresso é menor ou igual ao fornecido
                 this.result.add(events.get(i));
             }
         }
         return this.result;
     }
 
-    public ArrayList<Evento> filter(LocalTime duration) {
+    public ArrayList<Evento> filter(Duration duration) {
         ArrayList<Evento> events = this.event_list.getEventList();
         this.result.clear();
         
-        // Itera sobre todos os eventos e verifica se a duração é igual ao fornecido
+        // Itera sobre todos os eventos e verifica se a duração é menor ou igual ao fornecido
         for (int i = 0; i < events.size(); i++) {
-            if (duration.equals(events.get(i).getDuration())) {  // Verifica se a duração é igual ao fornecido
+            if (events.get(i).getDuration().compareTo(duration) < 0 ||
+                events.get(i).getDuration().equals(duration)) {  // Verifica se a duração é manor ou igual ao fornecido
                 this.result.add(events.get(i));
             }
         }

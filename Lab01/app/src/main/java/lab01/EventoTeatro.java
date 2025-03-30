@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 /**
  * Contém a estrutura de implementação de um Evento do tipo Teatro
@@ -24,10 +24,10 @@ public class EventoTeatro extends Evento {
      */
 
     public EventoTeatro(String nome, Local local, double precoIngresso, LocalDate date,
-                        String genre, ArrayList<String> cast, LocalTime duration) {
+                        String genre, Duration duration) {
         super(nome, local, precoIngresso, date, duration);
         this.genre = genre;
-        this.cast = cast;
+        this.cast = new ArrayList<String>();
     }
     /**
      * Imprime o elenco do Evento
@@ -37,6 +37,11 @@ public class EventoTeatro extends Evento {
         for (int i = 0; i < cast.size(); i++) {
             System.out.println(cast.get(i));
         }
+        System.out.println();
+    }
+
+    public void addToCast(String actor) {
+        this.cast.add(actor);
     }
     /**
      * Imprime as informações do Evento
@@ -44,11 +49,14 @@ public class EventoTeatro extends Evento {
 
     @Override
     public void showInfo() {
+        System.out.println("Dados do Evento:\n");
         System.out.println("Gênero: " + this.genre);
+        System.out.println("Local: " + this.getLocal().getNome());
+        System.out.print("Duração: " + formatDuration(this.getDuration()));
         System.out.println("Capacidade: " + this.getLocal().getCapacidade());
-        System.out.println("Cast: ");
+        System.out.println("Cast: \n");
         this.mostrarElenco();
-        System.out.println("Duração: " + this.getDuration());
         System.out.println("Data: " + this.getData());
+        System.out.println();
     }
 }

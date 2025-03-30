@@ -6,7 +6,7 @@
 
 package lab01;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +22,7 @@ public abstract class Evento {
     private ArrayList<Ingresso> ingressos_vendidos;
     private double precoIngresso;
     private LocalDate date;
-    private LocalTime duration;
+    private Duration duration;
 
     /**
      * Construtor da classe Evento
@@ -34,7 +34,7 @@ public abstract class Evento {
      * @param duration a duração do evento
      */
     public Evento(String nome, Local local,
-                double precoIngresso, LocalDate date, LocalTime duration){
+                double precoIngresso, LocalDate date, Duration duration){
         this.nome = nome;
         this.local = local;
         this.ingressos_vendidos = new ArrayList<Ingresso>();
@@ -118,7 +118,7 @@ public abstract class Evento {
      * Retorna a duração do evento
      * @return duration
      */
-    public LocalTime getDuration() {
+    public Duration getDuration() {
         return this.duration;
     }
     
@@ -126,7 +126,7 @@ public abstract class Evento {
      * Altera a duração do evento para `duration`
      * @param duration a duração do evento
      */
-    public void setDuration(LocalTime duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -172,6 +172,13 @@ public abstract class Evento {
         this.date = date;
     }
 
+    protected String formatDuration(Duration duration) {
+        long conv = duration.toMinutes();
+        long hrs = conv/60;
+        long min = conv%60;
+        return hrs + ":" + min + "\n";
+    }
+
     /**
      * Retorna o total faturado no Evento
      * @return
@@ -188,4 +195,9 @@ public abstract class Evento {
      */
 
     public abstract void showInfo();
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 }

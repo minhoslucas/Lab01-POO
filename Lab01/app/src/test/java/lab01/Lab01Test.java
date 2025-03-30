@@ -112,7 +112,7 @@ public class Lab01Test {
         LocalDate date = LocalDate.of(2025, 10, 25);
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", setlist, "Yves", time);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
-        Usuario usuarioTest = new Usuario("Gabriel", "gabriel@gmail.com", ingressoMeia);
+        Usuario usuarioTest = new Usuario("Gabriel", "gabriel@gmail.com");
         testEvento.adicionaIngresso(ingressoMeia, usuarioTest);
         assertEquals(1, testEvento.getIngressosVendidosQte());
         assertEquals(ingressoMeia, usuarioTest.getTicket());

@@ -24,9 +24,26 @@ public abstract class Ingresso {
         this.evento = evento;
     }
 
+    public Evento getEvento() {
+        return this.evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
     /**
      * Retorna o preço do Ingresso
      * @return o preço do Ingresso
      */
     public abstract double getPreco();
+
+    @Override
+    public String toString() {
+        return "INGRESSO VÁLIDO PARA: \n"
+        + this.evento.getNome() + "\n" 
+        + this.evento.getLocal() + "\n"
+        + this.evento.getData() + "\n"
+        + String.format("%,.2f", this.getPreco()) + "\n";
+    }
 }

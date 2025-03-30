@@ -10,6 +10,7 @@ package lab01;
  * 
  * @author Gabriel Leite - 216180
  * @author Caio Rhoden - 214129
+ * @author Lucas Beserra - 281815
  */
 public class Local {
     private String nome;
@@ -54,5 +55,11 @@ public class Local {
      */
     public void setCapacidade(double capacidade){
         this.capacidade = capacidade;
+    }
+
+    @Override
+    public String toString() {
+        return this.nome
+        + " (" + this.capacidade + ")";
     }
 }

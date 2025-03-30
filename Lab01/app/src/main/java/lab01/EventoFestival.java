@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 
 /**
@@ -21,9 +21,9 @@ public class EventoFestival extends Evento {
      */
 
     public EventoFestival(String nome, Local local, LocalDate date,
-                         double precoIngresso, ArrayList<String> lineup, LocalTime duration) {
+                         double precoIngresso, Duration duration) {
         super(nome, local, precoIngresso, date, duration);
-        this.lineup = lineup;
+        this.lineup = new ArrayList<String>();
     }
     /**
      * Retorna a lineup do Evento
@@ -40,17 +40,25 @@ public class EventoFestival extends Evento {
         for (int i = 0; i < lineup.size(); i++) {
             System.out.println(lineup.get(i));
         }
+        System.out.println();
+    }
+
+    public void addToLineup(String artist) {
+        this.lineup.add(artist);
     }
     /**
      * Imprime as informações do Evento
      */
     @Override
     public void showInfo() {
-        System.out.println("Lineup: ");
+        System.out.println("Dados do Evento:\n");
+        System.out.println("Local: " + this.getLocal().getNome());
+        System.out.print("Duração: " + formatDuration(this.getDuration()));
+        System.out.println("Lineup: \n");
         this.showLineup();
         System.out.println("Capacidade: " + this.getLocal().getCapacidade());
-        System.out.println("Duração: " + this.getDuration());
         System.out.println("Data: " + this.getData());
+        System.out.println();
     }
 
 }

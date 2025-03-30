@@ -25,10 +25,9 @@ public class Usuario {
      * @param email o email do Usuário
      * @param ticket o Ingresso do Usuário
      */
-    public Usuario(String nome, String email, Ingresso ticket){
+    public Usuario(String nome, String email){
         this.nome = nome;
         this.email = email;
-        this.ticket = ticket;
     }
 
     /**
@@ -77,5 +76,10 @@ public class Usuario {
 
     public void setTicket(Ingresso ticket) {
         this.ticket = ticket;
+    }
+
+    @Override
+    public String toString() {
+        return this.nome + ", " + this.email;
     }
 }

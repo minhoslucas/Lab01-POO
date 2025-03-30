@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 /**
  * Contém a estrutura de implementação de um Evento do tipo Show
@@ -26,11 +26,11 @@ public class EventoShow extends Evento {
      */
 
     public EventoShow(String nome, Local local, double precoIngresso, LocalDate date, String genre,
-                     ArrayList<String> setlist, String artist, LocalTime duration) {
+                     String artist, Duration duration) {
         super(nome, local, precoIngresso, date, duration);
         this.genre = genre;
-        this.setlist = setlist;
         this.artist = artist;
+        this.setlist = new ArrayList<String>();
     }
     /**
      * Imprime a setlist do evento
@@ -40,6 +40,7 @@ public class EventoShow extends Evento {
         for (int i = 0; i < setlist.size(); i++) {
             System.out.println(setlist.get(i));
         }
+        System.out.println();
     }
     /**
      * Imprime as informações do Evento
@@ -47,13 +48,17 @@ public class EventoShow extends Evento {
 
     @Override
     public void showInfo() {
+        System.out.println("Dados do Evento:\n");
+        System.out.println("Local: " + this.getLocal().getNome());
+        System.out.print("Duração: " + formatDuration(this.getDuration()));
+        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
+        System.out.println("Nome: " + this.getNome());
         System.out.println("Gênero: " + this.genre);
         System.out.println("Artista: " + this.artist);
-        System.out.println("Capacidade: " + this.getLocal().getCapacidade());
-        System.out.println("Setlist: ");
+        System.out.println("Setlist: \n");
         this.showSetlist();
-        System.out.println("Duração: " + this.getDuration());
         System.out.println("Data: " + this.getData());
+        System.out.println();
     }
     /**
      * Retorna o artista que vai se apresentar
@@ -70,6 +75,10 @@ public class EventoShow extends Evento {
 
     public void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    public void addToSetlist(String track) {
+        this.setlist.add(track);
     }
     
 }

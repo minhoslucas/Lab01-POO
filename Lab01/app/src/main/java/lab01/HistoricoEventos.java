@@ -45,7 +45,8 @@ public class HistoricoEventos {
 
     public void showEventList() {
         for (int i = 0; i < event_list.size(); i++) {
-            System.out.println(event_list.get(i).getNome());
+            System.out.print(event_list.get(i).getNome() + " (" + (i + 1) + ") ");
+            System.out.printf("%,.2f\n", event_list.get(i).getPrecoIngresso());
         }
     }
 }

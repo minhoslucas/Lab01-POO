@@ -1,7 +1,7 @@
 package lab01;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Duration;
 /**
  * Contém a estrutura de implementação de um Evento do tipo Esporte
  * @author Lucas Beserra - 281815
@@ -24,7 +24,7 @@ public class EventoEsporte extends Evento {
      */
 
     public EventoEsporte(String nome, Local local, double precoIngresso,
-                         LocalDate date, LocalTime duration, String timeDaCasa, String timeVisitante, String esporte) {
+                         LocalDate date, Duration duration, String timeDaCasa, String timeVisitante, String esporte) {
         super(nome, local, precoIngresso, date, duration);
         this.timeDaCasa = timeDaCasa;
         this.timeVisitante = timeVisitante;
@@ -78,9 +78,13 @@ public class EventoEsporte extends Evento {
      */
     @Override
     public void showInfo() {
-        System.out.println("Esporte:" + this.esporte);
-        System.out.println("Jogo:" + this.timeDaCasa + "Vs" + this.timeVisitante);
+        System.out.println("Dados do Evento:\n");
+        System.out.println("Local: " + this.getLocal().getNome());
         System.out.println("Capacidade: " + this.getLocal().getCapacidade());
+        System.out.print("Duração: " + formatDuration(this.getDuration()));
+        System.out.println("Esporte: " + this.esporte);
+        System.out.println("Jogo: " + this.timeDaCasa + " Vs " + this.timeVisitante);
         System.out.println("Data: " + this.getData());
+        System.out.println();
     }
 }
