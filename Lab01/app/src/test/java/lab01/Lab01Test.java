@@ -30,7 +30,7 @@ public class Lab01Test {
         Duration time = Duration.ofHours(3).plusMinutes(30);
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
         testEvento.setSetlist(setlist);
-        
+
         assertEquals(2000, testEvento.getLocal().getCapacidade());
     }
 
@@ -196,6 +196,7 @@ public class Lab01Test {
      */
     @Test
     public void testarFaturamento() {
+        //usuários gerados por IA
         Usuario user1 = new Usuario("Lucas", "lucas@gmail.com");
         Usuario user2 = new Usuario("Gabriel", "gabriel@gmail.com");
         Usuario user3 = new Usuario("Ana", "ana@gmail.com");
