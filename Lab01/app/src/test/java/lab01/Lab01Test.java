@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Lab01Test {
 
     /**
-     * Testa o método getCapacidade do EventoShow.
+     * Testa o método getCapacidade do Evento.
      * Verifica se o método getCapacidade retorna corretamente a capacidade do local do evento.
      * Neste caso, foi criado um evento do tipo EventoShow com o local "Teatro Castro Mendes".
      * 
@@ -30,11 +30,12 @@ public class Lab01Test {
         Duration time = Duration.ofHours(3).plusMinutes(30);
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
         testEvento.setSetlist(setlist);
+        
         assertEquals(2000, testEvento.getLocal().getCapacidade());
     }
 
     /**
-     * Testa os métodos get e set para o atributo 'artista' da classe EventoShow.
+     * Testa os métodos get e set para o atributo 'artista' da classe Evento.
      * Neste teste, o nome do artista do evento é alterado de "Yves" para "Anavitória".
      * 
      * Espera-se que o nome do artista seja atualizado corretamente.
@@ -53,11 +54,12 @@ public class Lab01Test {
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 199.90, date, "Kpop", "Yves", time);
         testEvento.setArtist("Anavitória");
         testEvento.setSetlist(setlist);
+
         assertEquals("Anavitória", testEvento.getArtist());
     }
 
     /**
-     * Testa o método getPreco da classe IngressoMeia.
+     * Testa o método getPreco da classe Ingresso.
      * Verifica se o preço do ingresso meia é calculado corretamente como metade do preço do ingresso completo.
      * Neste caso, o ingresso do EventoShow tem preço 200, então espera-se que o preço do ingresso meia seja 100.
      */
@@ -75,12 +77,13 @@ public class Lab01Test {
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 200, date, "Kpop", "Yves", time);
         testEvento.setSetlist(setlist);
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
+
         assertEquals(100, ingressoMeia.getPreco());
         assertEquals(200, testEvento.getPrecoIngresso());
     }
 
     /**
-     * Testa o método getPreco da classe IngressoInteira.
+     * Testa o método getPreco da classe Ingresso.
      * Verifica se o preço do ingresso inteiro é calculado corretamente, retornando o valor completo.
      * Neste caso, o ingresso do EventoShow tem preço 250, e espera-se que o preço do ingresso inteiro seja 250.
      */
@@ -98,11 +101,12 @@ public class Lab01Test {
         EventoShow testEvento = new EventoShow("Apple Cider Cinnamon Crunch", testLocal, 250, date, "Kpop", "Yves", time);
         testEvento.setSetlist(setlist);
         IngressoInteira ingressoInteira = new IngressoInteira(testEvento);
+
         assertEquals(250, ingressoInteira.getPreco());
     }
 
     /**
-     * Testa o método adicionarIngresso da classe EventoShow.
+     * Testa o método adicionaIngresso da classe Evento.
      * Verifica se o ingresso meia é corretamente adicionado à lista de ingressos vendidos do evento.
      * Além disso, verifica se o ingresso foi corretamente atribuído ao usuário.
      */
@@ -122,12 +126,13 @@ public class Lab01Test {
         IngressoMeia ingressoMeia = new IngressoMeia(testEvento);
         Usuario usuarioTest = new Usuario("Gabriel", "gabriel@gmail.com");
         testEvento.adicionaIngresso(ingressoMeia, usuarioTest);
+
         assertEquals(1, testEvento.getIngressosVendidosQte());
         assertEquals(ingressoMeia, usuarioTest.getTicket());
     }
 
     /**
-     * Testa o método adicionarEvento da classe HistoricoEventos.
+     * Testa o método addToList da classe HistoricoEventos.
      * Verifica se os eventos foram corretamente adicionados ao histórico de eventos.
      * Espera-se que a quantidade de eventos no histórico seja igual a 2.
      */
@@ -142,11 +147,12 @@ public class Lab01Test {
         HistoricoEventos historicoTeste = new HistoricoEventos();
         historicoTeste.addToList(testEvento1);
         historicoTeste.addToList(testEvento2);
+
         assertEquals(2, historicoTeste.getEventList().size());
     }
 
     /**
-     * Testa o método buscarEventosPorTipo da classe HistoricoEventos.
+     * Testa o filtro de eventos
      * Verifica se o filtro retorna corretamente os eventos do tipo EventoShow.
      * Espera-se que dois eventos do tipo EventoShow sejam encontrados.
      */
@@ -179,6 +185,40 @@ public class Lab01Test {
         historicoTeste.addToList(testEvento1);
         Filtro filter = new Filtro(historicoTeste);
         ArrayList<Evento> result = filter.filter(EventoShow.class);
+
         assertEquals(2, result.size());
+    }
+
+    /**
+     * Testa o cálculo do faturamento
+     * Verifica se o cálculo é feito de forma correta e que não são vendidos mais ingressos que o disponível
+     * Espera-se que do faturamento seja R$1199.92 com 7 ingressos vendidos
+     */
+    @Test
+    public void testarFaturamento() {
+        Usuario user1 = new Usuario("Lucas", "lucas@gmail.com");
+        Usuario user2 = new Usuario("Gabriel", "gabriel@gmail.com");
+        Usuario user3 = new Usuario("Ana", "ana@gmail.com");
+        Usuario user4 = new Usuario("Carlos", "carlos@gmail.com");
+        Usuario user5 = new Usuario("Beatriz", "beatriz@gmail.com");
+        Usuario user6 = new Usuario("Marcos", "marcos@gmail.com");
+        Usuario user7 = new Usuario("Fernanda", "fernanda@gmail.com");
+        Usuario user8 = new Usuario("Juliana", "juliana@gmail.com");
+
+        Local testLocal = new Local("Allianz Park", 7);
+        Duration time = Duration.ofHours(3).plusMinutes(30);
+        LocalDate date = LocalDate.of(2025, 10, 25);
+        EventoEsporte testEvento = new EventoEsporte("Clássico Rei", testLocal, 149.99, date, time, "Santos", "Palmeiras", "Futebol");
+        testEvento.adicionaIngresso(new IngressoVIP(testEvento), user1);
+        testEvento.adicionaIngresso(new IngressoInteira(testEvento), user2);
+        testEvento.adicionaIngresso(new IngressoInteira(testEvento), user3);
+        testEvento.adicionaIngresso(new IngressoInteira(testEvento), user4);
+        testEvento.adicionaIngresso(new IngressoMeia(testEvento), user5);
+        testEvento.adicionaIngresso(new IngressoMeia(testEvento), user6);
+        testEvento.adicionaIngresso(new IngressoVIP(testEvento), user7);
+        testEvento.adicionaIngresso(new IngressoVIP(testEvento), user8);
+
+        assertEquals(1199.92, testEvento.calculaFaturamento());
+        assertEquals(7, testEvento.getIngressosVendidosQte());
     }
 }
