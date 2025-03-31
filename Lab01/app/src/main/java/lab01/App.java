@@ -25,7 +25,7 @@
       * Este método inicializa o sistema, solicita entradas do usuário e executa a lógica de compra de ingressos
       * ou filtro de eventos, de acordo com a escolha do usuário.
       * 
-      * @param args Argumentos da linha de comando (não utilizados).
+      * @param args Argumentos da linha de comando.
       */
      public static void main(String[] args) {
  
