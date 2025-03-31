@@ -6,7 +6,17 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-//Comentários feitos por IA e corrigidos posteriormente
+/**
+ * Foi alterado o nome do artista com todos os testes de show, pois eu não conhecia as músicas da anavitória
+ * para gerar a setlist do show delas.
+ * 
+ * Foi alterado o tipo da data e da duração do show para coincidir com a implementação escolhida
+ * 
+ * Foram criados novos testes (Histórico, Filtro e Faturamento) para demonstrar as funcionalidades
+ * do histórico, do filtro (que usa o histórico) e do método que calcula o faturamento total
+ * 
+ * comentários dos testes gerados por IA e corrigidos posteriormente
+ */
 
 public class Lab01Test {
 
