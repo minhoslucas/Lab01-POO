@@ -7,6 +7,7 @@ import java.util.ArrayList;
 /**
  * Interface que define os métodos para filtrar eventos de acordo com diferentes critérios, como data, tipo de evento,
  * preço do ingresso e duração do evento.
+ * comentários feitos por IA e corrigidos posteriormente
  * 
  * @author Lucas Beserra - 281815
  */
@@ -68,6 +69,42 @@ class Filtro implements FiltroEventos{
     public Filtro(HistoricoEventos event_list) {
         this.event_list = event_list;
         this.result = new ArrayList<Evento>(); // Inicializa a lista de resultados do filtro
+    }
+
+    /**
+     * Retorna a lista de eventos históricos.
+     * 
+     * @return A lista de eventos históricos.
+     */
+    public HistoricoEventos getEventList() {
+        return this.event_list;
+    }
+
+    /**
+     * Altera a lista de eventos históricos.
+     * 
+     * @param event_list A nova lista de eventos históricos.
+     */
+    public void setEventList(HistoricoEventos event_list) {
+        this.event_list = event_list;
+    }
+
+    /**
+     * Retorna a lista de resultados do filtro aplicado.
+     * 
+     * @return A lista de eventos filtrados.
+     */
+    public ArrayList<Evento> getResult() {
+        return this.result;
+    }
+
+    /**
+     * Altera a lista de resultados do filtro aplicado.
+     * 
+     * @param result A nova lista de eventos filtrados.
+     */
+    public void setResult(ArrayList<Evento> result) {
+        this.result = result;
     }
 
     /**

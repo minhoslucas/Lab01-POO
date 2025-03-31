@@ -99,6 +99,20 @@ public class EventoShow extends Evento {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+    /**
+     * Retorna o gênero musical do show
+     * @return o gênero musical do show
+     */
+    public String getGenre() {
+        return this.genre;
+    }
+    /**
+     * Muda o gênero musical do show para `genre`
+     * @param genre o novo gênero musical
+     */
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     /**
      * Adiciona uma música à lista de músicas (setlist) que serão tocadas no show.
